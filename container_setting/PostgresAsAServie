@@ -1,0 +1,12 @@
+[Unit]
+Description=Postgres_Container
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/systemd-nspawn -D /var/lib/machines/postgres service postgresql start
+Restart=always
+
+# I think I should put an infinit command to continue the process because the service keeps restarting
+
+[Install]
+WantedBy=multi-user.target

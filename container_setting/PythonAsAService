@@ -1,11 +1,12 @@
 # Ading this file to this location to run this container as a service /etc/systemd/system/python3.9-container.service
 
 [Unit]
-Description=Python_3.9_Container
+Description=Python 3.9 Container
+Documentation=man:systemd-nspawn(1)
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/systemd-nspawn -D /var/lib/machines/python3.9-container
+ExecStart=/usr/bin/systemd-nspawn -D /var/lib/machines/python3.9-container python3 /home/Project/manage.py runserver 0.0.0.0:8000
 Restart=always
 
 [Install]

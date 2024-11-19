@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  counter-app
+  labels:
+    app:  counter-app
+spec:
+  selector:
+    matchLabels:
+      app: counter-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  counter-app
+    spec:
+      containers:
+      - name:  counter-app
+        image:  counter-app:1
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/sh"]
+        args: ["-c", "python3 manage.py runserver 0.0.0.0:8000"]
+        ports:
+          - containerPort: 8000
+        envFrom:
+          - configMapRef:
+              name: counter-app-config
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+          limits:
+            cpu: 250m
+            memory: 512Mi

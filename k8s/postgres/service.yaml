@@ -5,12 +5,10 @@ metadata:
 spec:
   selector:
     app: postgres
+  clusterIP: None
   ports:
   - name: postgres
     port: 5432
     targetPort: 5432
-    clusterIP: None
-    selector:
-      app: postgres
     # If you set the `spec.type` field to `NodePort` and you want a specific port number,
     # you can specify a value in the `spec.ports[*].nodePort` field.

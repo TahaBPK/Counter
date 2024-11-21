@@ -38,6 +38,8 @@ spec:
         - name: db-data
           persistentVolumeClaim:
             claimName: postgres-pvc
+      nodeSelector:
+        tier: db
 
 ---
 

@@ -16,15 +16,18 @@ spec:
     spec:
       containers:
       - name:  counter-app
-        image:  counter-app:1
+        image:  counter-app:2
         imagePullPolicy: IfNotPresent
         command: ["/bin/sh"]
-        args: ["-c", "python3 manage.py runserver 0.0.0.0:8000"]
+        args: ["-c", "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+        # args: ["-c", "sleep 10000"]
         ports:
           - containerPort: 8000
         envFrom:
           - configMapRef:
               name: counter-app-config
+          - secretRef:
+              name: counter-app-secret
         resources:
           requests:
             cpu: 250m

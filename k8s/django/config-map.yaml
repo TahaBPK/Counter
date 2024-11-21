@@ -5,12 +5,6 @@ metadata:
   labels: 
     app: counter-app
 data:
-  SECRET_KEY: 'django-insecure-(#$%@_h5=%!@0^+smkor)avxijj1x=(ai_bc@7#g@%l)q3+6rv'
   DEBUG: 'false'
   ALLOWED_HOSTS: "*"
   DB_ENGINE: 'django.db.backends.postgresql'
-  DB_NAME: 'counter_db'
-  DB_USER: 'user'
-  DB_PASSWORD: 'password'
-  DB_HOST: 'db'
-  DB_PORT: '5432'
